@@ -36,7 +36,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.55;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
+html, body { max-width: 100%; }
+img, iframe, svg, video { max-width: 100%; }
+.hero-title, .display, .jb-title, .ck-title { overflow-wrap: anywhere; word-break: break-word; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; }
@@ -1008,8 +1012,12 @@ button { font-family: inherit; cursor: pointer; }
   :root { --gutter: 32px; }
   .hero-inner { gap: 48px; }
 }
+
+/* Tablet */
 @media (max-width: 880px) {
   :root { --gutter: 24px; }
+
+  /* Nav: hamburger menu */
   .primary-nav,
   .nav-inner > .btn-pill { display: none; }
   .nav-toggle { display: flex; margin-left: auto; }
@@ -1024,6 +1032,7 @@ button { font-family: inherit; cursor: pointer; }
   .nav-inner.open .primary-nav ul { flex-direction: column; gap: 14px; }
   .nav-inner.open .btn-pill { display: inline-flex; align-self: flex-start; }
 
+  /* Single-column layouts */
   .hero-inner,
   .vision-grid,
   .contact-grid,
@@ -1035,18 +1044,145 @@ button { font-family: inherit; cursor: pointer; }
   .checklist li { border-right: none !important; }
   .checklist li:last-child { border-bottom: none; }
   .foot-cols { grid-template-columns: repeat(2, 1fr); }
+
+  /* Hero stats: 2-up */
   .hero-strip { grid-template-columns: repeat(2, 1fr); }
   .hero-strip > div { border-bottom: 1px dashed var(--ink-3); padding: 12px 14px; }
   .hero-strip > div:nth-child(2) { border-right: none; }
   .hero-strip > div:nth-last-child(-n+2) { border-bottom: none; }
-  .manifesto, .eligibility, .contact, .vision { padding: 72px 0; }
+
+  /* Section paddings */
+  .manifesto, .eligibility, .contact, .vision, .faq { padding: 72px 0; }
+  .hero-inner { padding: 48px var(--gutter) 64px; }
+
+  /* Poster + vision art: cap width so they're not full-bleed on tablet */
+  .poster-frame--art,
+  .vi-art--full { max-width: 480px; margin: 0 auto; }
+
+  /* Heading sizes */
+  .hero-title { font-size: clamp(2.2rem, 8vw, 3.8rem); }
+  .display { font-size: clamp(1.8rem, 6vw, 3rem); }
 }
+
+/* Phone landscape / small tablet */
+@media (max-width: 640px) {
+  .marquee-track { font-size: 1.1rem; gap: 24px; animation-duration: 22s; }
+  .marquee { padding: 12px 0; }
+  .ticker { font-size: 10px; padding: 8px 0; }
+
+  /* Hero CTAs stack and full-width */
+  .hero-ctas { flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-link {
+    justify-content: center;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 13px;
+  }
+  .hero-ctas .btn-link { border-bottom: 2px solid var(--ink); padding-bottom: 12px; }
+
+  /* Hero title sizing */
+  .hero-title { font-size: clamp(2rem, 10vw, 3rem); line-height: 1; }
+  .t-cursive { font-size: 1.6em; line-height: 0.85; }
+
+  /* Buttons globally */
+  .btn-primary { padding: 12px 22px; font-size: 13px; box-shadow: 3px 3px 0 var(--ink); }
+  .btn-primary-lg { padding: 14px 26px; font-size: 14px; }
+}
+
+/* Phone */
 @media (max-width: 540px) {
-  :root { --gutter: 20px; }
+  :root { --gutter: 18px; }
   .brand-tag { display: none; }
-  .marquee-track { font-size: 1.1rem; }
-  .poster-stamp { right: -8px; bottom: -14px; padding: 8px 14px; font-size: 11px; }
+  .brand-name { font-size: 12px; }
+  .brand-logo { width: 44px; height: 44px; }
+
+  /* Hero stats: 1 column on tiny screens */
+  .hero-strip { grid-template-columns: 1fr; padding: 8px 0; }
+  .hero-strip > div {
+    padding: 12px 0;
+    border-right: none !important;
+    border-bottom: 1px dashed var(--ink-3);
+    flex-direction: row;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .hero-strip > div:last-child { border-bottom: none; }
+  .hero-strip strong { font-size: 1.6rem; }
+
+  /* Marquee */
+  .marquee-track { font-size: 0.95rem; }
+
+  /* Poster stamp */
+  .poster-stamp {
+    right: -6px;
+    bottom: -12px;
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  /* Footer single column */
   .foot-cols { grid-template-columns: 1fr; }
-  .contact-meta li { grid-template-columns: 1fr; gap: 4px; }
-  .hero-title { font-size: 2.4rem; }
+  .footer-top { gap: 36px; padding-bottom: 36px; }
+  .footer-bottom { padding: 18px 0; }
+  .fb-inner { flex-direction: column; gap: 8px; text-align: center; font-size: 10px; }
+
+  /* Contact meta single column */
+  .contact-meta li { grid-template-columns: 1fr; gap: 4px; padding: 14px 4px; }
+  .cm-label { font-size: 10px; }
+  .cm-value { font-size: 1rem; }
+
+  /* FAQ summary */
+  .faq-list summary { padding: 18px 20px; font-size: 1rem; gap: 16px; }
+  .faq-list summary::after { font-size: 1.4rem; }
+  .faq-list details p { padding: 0 20px 22px; font-size: 0.94rem; }
+
+  /* Manifesto demands */
+  .demand { padding: 28px 22px; }
+  .d-num { font-size: 2rem; }
+  .d-text { font-size: 0.96rem; }
+
+  /* Eligibility */
+  .checklist li {
+    padding: 24px 22px;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "num tick"
+      "title tick"
+      "sub sub";
+  }
+  .ck-title { font-size: 1.4rem; }
+  .ck-tick { width: 36px; height: 36px; font-size: 18px; }
+
+  /* Mission card */
+  .mission-card { padding: 18px 20px; }
+
+  /* Contact iframe — taller to avoid double-scroll, account for narrower mobile form */
+  .contact-form--embed iframe { height: 1100px; }
+
+  /* Section paddings */
+  .manifesto, .eligibility, .contact, .vision, .faq, .join-banner { padding: 56px 0; }
+  .join-banner { padding: 56px var(--gutter); }
+  .hero-inner { padding: 36px var(--gutter) 52px; }
+
+  /* Section heads */
+  .display { font-size: clamp(1.6rem, 8vw, 2.4rem); }
+  .lead { font-size: 0.98rem; }
+  .section-head, .elig-head { margin-bottom: 36px; }
+
+  /* Join banner */
+  .jb-title { font-size: clamp(1.4rem, 5.5vw, 2rem); }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+  :root { --gutter: 14px; }
+  .brand-name { font-size: 11px; line-height: 1.1; }
+  .nav-inner { padding: 12px var(--gutter); gap: 12px; }
+  .hero-title { font-size: 1.9rem; }
+  .t-cursive { font-size: 1.5em; }
+  .display { font-size: 1.7rem; }
+  .demand { padding: 22px 18px; }
+  .checklist li { padding: 20px 18px; }
+  .contact-form--embed iframe { height: 1200px; }
 }
