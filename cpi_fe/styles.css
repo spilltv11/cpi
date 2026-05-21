@@ -1090,6 +1090,24 @@ button { font-family: inherit; cursor: pointer; }
   .btn-primary-lg { padding: 14px 26px; font-size: 14px; }
 }
 
+/* Tighten poster/vision frame shadows + stamp so nothing overflows viewport */
+@media (max-width: 880px) {
+  .poster-frame,
+  .vi-art {
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+  .poster-stamp {
+    right: 8px;
+    bottom: -10px;
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+  /* Give hero poster column its own breathing room and constrain max width */
+  .hero-poster { padding: 0 4px; }
+  .poster-frame--art,
+  .vi-art--full { max-width: min(420px, 100%); }
+}
+
 /* Phone */
 @media (max-width: 540px) {
   :root { --gutter: 18px; }
