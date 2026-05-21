@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cockroachpartyofindia.org/sitemap.xml

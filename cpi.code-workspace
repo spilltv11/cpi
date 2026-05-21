@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "cpi-fe",
+			"path": "cpi-fe"
+		},
+		{
+			"name": "cpi-be",
+			"path": "-be"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"java.compile.nullAnalysis.mode": "automatic"
+	}
+}
